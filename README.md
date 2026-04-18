@@ -336,10 +336,4 @@ GitHub: [https://github.com/himnad](https://github.com/himnad)
 
 ```
 
----
 
-If you want, I can next:
-- make it **ATS/resume-ready description**
-- add **architecture diagram labels**
-- or prepare **viva answers based on this README**
-```
