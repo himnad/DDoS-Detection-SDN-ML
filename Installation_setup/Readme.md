@@ -1,63 +1,138 @@
-## Installation
-### SetupStep-1
-install [Virtual box](https://www.virtualbox.org/wiki/Downloads) or VM-ware workstation
 
-Step-2 
-install [Mininet-VM](https://github.com/mininet/mininet/releases/)
+# Installation Guide
 
-Step-3
-install [Ubuntu](https://ubuntu.com/download/desktop) in virtual box
+## Environment Setup
 
-Step-4
-install [ryu-controller](https://ryu.readthedocs.io/en/latest/getting_started.html) in ubuntu vm
+To ensure a stable and isolated development environment, this project is executed using a virtualized Linux system.
 
-Step-5
-Use git clone to install the code files
+* Virtualization Tool: Oracle VM VirtualBox
+* Guest Operating System: Ubuntu 20.04.6 LTS
+
+The Ubuntu ISO image was downloaded from the official website. Due to its large size, a download manager integration was used to accelerate the process.
+
+---
+
+## Step 1: Install VirtualBox
+
+1. Download VirtualBox from the official website:
+   [https://www.virtualbox.org/](https://www.virtualbox.org/)
+
+2. Install it on your host system (Windows/Linux).
+
+3. Launch VirtualBox and create a new virtual machine with:
+
+   * Type: Linux
+   * Version: Ubuntu (64-bit)
+   * RAM: Minimum 4 GB (Recommended)
+   * Storage: 20 GB (Dynamically allocated)
+
+---
+
+## Step 2: Install Ubuntu on Virtual Machine
+
+1. Download Ubuntu 20.04.6 LTS ISO from:
+   [https://releases.ubuntu.com/20.04/](https://releases.ubuntu.com/20.04/)
+
+2. Attach the ISO file to the virtual machine.
+
+3. Start the VM and follow the installation wizard:
+
+   * Select language and keyboard layout
+   * Choose “Normal Installation”
+   * Allocate disk space
+   * Set username and password
+
+4. Complete installation and restart the VM.
+
+---
+
+## Step 3: Optional – Faster Download Using IDM
+
+To speed up the download of the Ubuntu ISO file:
+
+* Use Internet Download Manager integration with your browser
+* This improves download speed and stability for large files
+
+---
+
+## Step 4: Update System
+
 ```bash
-git clone https://github.com/chiragbiradar/DDoS-Attack-Detection-and-Mitigation-using-Machine-Learning.git
+sudo apt update
+sudo apt upgrade -y
 ```
 
+---
 
-### Go to Ubuntu/ryu controller vm
+## Step 5: Install Python and Pip
 
 ```bash
-#check your IP address
-ifcongif
-# it should be something 198.162.XX.XX copy it
-# change working directory to controller folder
-cd controller
-
-# switch on the ryu-controller
-ryu-manager controller.py
+sudo apt install python3 python3-pip -y
 ```
 
-
-### Go to Mininet-vm
+Verify installation:
 
 ```bash
-# change working directory to mininet folder
-cd mininet
-
-# change controller ip address that you copied from ryu controller ip
-nano topology.py
-
-# run topology
-sudo python topology.py
+python3 --version
+pip3 --version
 ```
 
-### hping commands 
+---
+
+## Step 6: Install Mininet
+
 ```bash
-# icmp flood
-hping3 -1 -V -d 120 -w 64 -p 80 --rand-source --flood
+sudo apt install mininet -y
+```
 
-# syn flood
-hping3 -S -V -d 120 -w 64 -p 80 --rand-source --flood
+Verify:
 
-# udp flood
-hping3 -2 -V -d 120 -w 64 -p 80 --rand-source --flood
+```bash
+mn --version
+```
 
+---
 
-# You can try out the project using our vm too
-## [Link to download our Mininet VM and Ryu Controller](shorturl.at/szH58)
+## Step 7: Install Ryu Controller
 
+```bash
+pip3 install ryu
+```
+
+Verify:
+
+```bash
+ryu-manager --version
+```
+
+---
+
+## Step 8: Install Open vSwitch
+
+```bash
+sudo apt install openvswitch-switch -y
+```
+
+---
+
+## Step 9: Install Required Python Libraries
+
+```bash
+pip3 install pandas numpy scikit-learn
+```
+
+---
+
+## Installation Complete
+
+Your system is now fully configured to run the DDoS Detection and Mitigation using Machine Learning (SDN) project.
+
+---
+
+## Author
+
+Akhil Himnad
+MTech Scholar,NIT Bhopal
+
+---
 
